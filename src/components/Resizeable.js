@@ -3,7 +3,20 @@ import reactable from 'reactablejs';
 
 // check https://github.com/beizhedenglong/reactablejs
 
-const Reactable = props => (
+
+interface State {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  angle: number;
+}
+
+interface ChildProps extends State {
+  getRef: React.RefObject<HTMLDivElement>;
+}
+
+const Reactable = (props: ChildProps) => (
 	<div
     style={{
       fontSize: '30px',

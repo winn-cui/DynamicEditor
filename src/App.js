@@ -5,9 +5,13 @@ import { Editor } from 'slate-react';
 import { Value } from 'slate';
 import { BoldMark, ItalicMark } from './index';
 
-import Resizeable from './components/Resizeable';
+import Interactable from './components/Interactable';
+
+// import Resizeable from './components/Resizeable';
 
 
+
+import interact from 'interactjs';
 
 
 
@@ -43,6 +47,8 @@ function App() {
     width: 400,
     height: 400,
     angle: 0,
+    interactable_string: 'hello',
+
     }
   );
   
@@ -109,17 +115,7 @@ function App() {
 
   return (
     <div className="App">
-      <Resizeable
-        draggable
-        gesturable
-        resizable={{
-          edges: { left: true, right: true, bottom: true, top: true },
-        }}
-        onDragMove={handleDragMove}
-        onGestureMove={handleGestureMove}
-        // onResizeMove={handleResizeMove}
-        {...state}
-      />
+      <Interactable interactable_string={ state.interactable_string } />
       <Editor 
         value={state.value} 
         onChange={ ({value}) => setState({value}) } 
